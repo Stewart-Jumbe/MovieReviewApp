@@ -1,19 +1,17 @@
 package com.tsi.sjumbe.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@IdClass(Film.class)
 public class FilmActor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int actor_id;
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.TABLE)
+    @Id
+    @GeneratedValue
     private int film_id;
 
     //empty constructor

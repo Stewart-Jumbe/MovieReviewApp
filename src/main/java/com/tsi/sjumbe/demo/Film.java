@@ -1,12 +1,12 @@
 package com.tsi.sjumbe.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity//notifys java that this is a table in our database
-public class Film {
+@Table(name ="film")
+public class Film  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -19,9 +19,29 @@ public class Film {
     private int release_year;
     private float length;
 
+
     //blank constructor
     public Film(){
 
+    }
+
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "film_actor",
+            joinColumns = {
+                    @JoinColumn(name = "film_id", referencedColumnName = "film_id",
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "actor_id", referencedColumnName = "actor_id",
+                            nullable = false, updatable = false)})
+    private Set<Actor> actors = new HashSet<>();
+
+    public Set<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(Set<Actor> actors) {
+        this.actors = actors;
     }
 
     public Film(String title,
@@ -35,6 +55,7 @@ public class Film {
         this.rating = rating;
         this.length = length;
     }
+
 
     public int getFilm_id() {
         return film_id;

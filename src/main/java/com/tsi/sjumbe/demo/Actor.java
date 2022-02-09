@@ -1,11 +1,11 @@
 package com.tsi.sjumbe.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Table(name ="actor")
 public class Actor {
 
     @Id
@@ -16,9 +16,21 @@ public class Actor {
     private String first_Name;
     private String last_Name;
 
+
+    @ManyToMany(mappedBy = "actor", fetch = FetchType.LAZY)
+    private Set<Film> films = new HashSet<>();
+
     //Empty Constructor
     public Actor(){
 
+    }
+
+    public Set<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(Set<Film> films) {
+        this.films = films;
     }
 
     public Actor(String first_Name, String last_Name){
