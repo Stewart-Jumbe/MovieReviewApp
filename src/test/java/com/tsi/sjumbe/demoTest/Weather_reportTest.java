@@ -1,5 +1,6 @@
-package com.tsi.sjumbe.demo;
+package com.tsi.sjumbe.demoTest;
 
+import com.tsi.sjumbe.demo.Weather_report;
 import org.junit.jupiter.api.Test;
 
 

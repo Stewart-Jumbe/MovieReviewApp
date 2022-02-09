@@ -18,8 +18,7 @@ public class SakilaMicroserviceApplication {
 	private ActorRepository actorRepository;
 	@Autowired
 	private CategoryRepository categoryRepository;
-	@Autowired
-	private FilmActorRepository filmActorRepository;
+	private String save="save";
 
 	public SakilaMicroserviceApplication(LanguageRepository languageRepository,
 										 FilmRepository filmRepository,
@@ -35,12 +34,17 @@ public class SakilaMicroserviceApplication {
 		SpringApplication.run(SakilaMicroserviceApplication.class, args);
 	}
 
+	@PostMapping("/newlanguage")
+	public @ResponseBody String addLanguage(@RequestParam String name){
+		Language addLanguage = new Language(name);
+		languageRepository.save(addLanguage);
+		return save;
+	}
 	//Request to get all languages from
 	@GetMapping("/alllanguages")
 	public @ResponseBody
 	Iterable<Language>getAllLanguages(){
 		return languageRepository.findAll();
-
 	}
 
 
@@ -64,12 +68,6 @@ public class SakilaMicroserviceApplication {
 
 	}
 
-	@GetMapping("/allfilmactors")
-	public @ResponseBody
-	Iterable<FilmActor>getAllFilmActors(){
-		return filmActorRepository.findAll();
-
-	}
 
 
 

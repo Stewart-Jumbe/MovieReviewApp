@@ -18,7 +18,7 @@ public class Actor {
 
 
     @ManyToMany(mappedBy = "actor", fetch = FetchType.LAZY)
-    private Set<Film> films = new HashSet<>();
+    private Set<Film> film = new HashSet<>();
 
     //Empty Constructor
     public Actor(){
@@ -26,11 +26,11 @@ public class Actor {
     }
 
     public Set<Film> getFilms() {
-        return films;
+        return film;
     }
 
     public void setFilms(Set<Film> films) {
-        this.films = films;
+        this.film = films;
     }
 
     public Actor(String first_Name, String last_Name){

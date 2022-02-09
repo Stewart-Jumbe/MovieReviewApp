@@ -34,14 +34,14 @@ public class Film  {
             inverseJoinColumns = {
                     @JoinColumn(name = "actor_id", referencedColumnName = "actor_id",
                             nullable = false, updatable = false)})
-    private Set<Actor> actors = new HashSet<>();
+    private Set<Actor> actor = new HashSet<>();
 
-    public Set<Actor> getActors() {
-        return actors;
+    public Set<Actor> getActor() {
+        return actor;
     }
 
     public void setActors(Set<Actor> actors) {
-        this.actors = actors;
+        this.actor = actors;
     }
 
     public Film(String title,
