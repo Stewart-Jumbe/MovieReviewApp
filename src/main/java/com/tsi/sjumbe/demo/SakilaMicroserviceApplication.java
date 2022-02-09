@@ -13,8 +13,18 @@ public class SakilaMicroserviceApplication {
 	@Autowired
 	private LanguageRepository languageRepository;
 
-	public SakilaMicroserviceApplication(LanguageRepository languageRepository){
+	@Autowired
+	private FilmRepository filmRepository;
+
+	@Autowired
+	private ActorRepository actorRepository;
+
+	public SakilaMicroserviceApplication(LanguageRepository languageRepository,
+										 FilmRepository filmRepository,
+										 ActorRepository actorRepository){
 		this.languageRepository = languageRepository;
+		this.filmRepository = filmRepository;
+		this.actorRepository =actorRepository;
 	}
 
 	public static void main(String[] args) {
@@ -22,11 +32,26 @@ public class SakilaMicroserviceApplication {
 	}
 
 	//Request to get all languages from
-@GetMapping("/alllanguages")
+	@GetMapping("/alllanguages")
 	public @ResponseBody
 	Iterable<Language>getAllLanguages(){
 		return languageRepository.findAll();
 
 }
+	//@Responsebody is the response that will be given when get request is posted
+	@GetMapping("/allfilms")
+	public @ResponseBody
+	Iterable<Film>getAllFilms(){
+		return filmRepository.findAll();
+	}
+
+	@GetMapping("/allactors")
+	public @ResponseBody
+	Iterable<Actor>getAllActors(){
+		return actorRepository.findAll();
+	}
+
+
+
 
 }

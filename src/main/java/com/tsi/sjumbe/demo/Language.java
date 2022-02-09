@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonTypeId;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -14,12 +15,13 @@ public class Language {
 
     //Linking our primary key in java to mysql
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int language_id;
 
+    //Attributes
     private String name;
 
-    ///empty constructor//
+    ///empty constructor// needed to access DB
     public Language(){
 
     }
