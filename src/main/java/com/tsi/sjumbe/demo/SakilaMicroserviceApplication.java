@@ -18,6 +18,8 @@ public class SakilaMicroserviceApplication {
 	private ActorRepository actorRepository;
 	@Autowired
 	private CategoryRepository categoryRepository;
+	@Autowired
+	private FilmActorRepository filmActorRepository;
 
 	public SakilaMicroserviceApplication(LanguageRepository languageRepository,
 										 FilmRepository filmRepository,
@@ -57,6 +59,13 @@ public class SakilaMicroserviceApplication {
 	public @ResponseBody
 	Iterable<Category>getAllCategories(){
 		return categoryRepository.findAll();
+
+	}
+
+	@GetMapping("/allfilmactors")
+	public @ResponseBody
+	Iterable<FilmActor>getAllFilmActors(){
+		return filmActorRepository.findAll();
 
 	}
 
