@@ -11,8 +11,6 @@ import javax.persistence.Id;
 @Entity
 public class Language {
 
-
-
     //Linking our primary key in java to mysql
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

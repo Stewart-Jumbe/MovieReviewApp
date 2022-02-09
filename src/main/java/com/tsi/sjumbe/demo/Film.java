@@ -41,7 +41,13 @@ public class Film implements Serializable {
     private Set<Actor> actor = new HashSet<>();
 
 
+   public Set<Actor> getActor() {
+        return actor;
+    }
 
+    public void setActors(Set<Actor> actors) {
+        this.actor = actors;
+    }
 
     public Film(String title,
                 String description,
@@ -55,24 +61,14 @@ public class Film implements Serializable {
         this.rating = rating;
         this.length = length;
     }
-    public Set<Actor> getActor() {
 
-        return actor;
-    }
-
-    public void setActors(Set<Actor> actors) {
-
-        this.actor = actors;
-    }
 
     public int getFilm_id() {
-
         return film_id;
     }
 
 
     public String getTitle() {
-
         return title;
     }
 
@@ -82,17 +78,14 @@ public class Film implements Serializable {
     }
 
     public String getDescription() {
-
         return description;
     }
 
     public void setDescription(String description) {
-
         this.description = description;
     }
 
     public String getRating() {
-
         return rating;
     }
 
@@ -102,7 +95,6 @@ public class Film implements Serializable {
     }
 
     public int getRelease_year() {
-
         return release_year;
     }
 
@@ -112,7 +104,6 @@ public class Film implements Serializable {
     }
 
     public float getFilm_length() {
-
         return length;
     }
 
