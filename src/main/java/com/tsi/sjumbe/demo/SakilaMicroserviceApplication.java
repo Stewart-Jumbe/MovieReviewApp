@@ -12,19 +12,21 @@ public class SakilaMicroserviceApplication {
 
 	@Autowired
 	private LanguageRepository languageRepository;
-
 	@Autowired
 	private FilmRepository filmRepository;
-
 	@Autowired
 	private ActorRepository actorRepository;
+	@Autowired
+	private CategoryRepository categoryRepository;
 
 	public SakilaMicroserviceApplication(LanguageRepository languageRepository,
 										 FilmRepository filmRepository,
-										 ActorRepository actorRepository){
+										 ActorRepository actorRepository,
+										 CategoryRepository categoryRepository){
 		this.languageRepository = languageRepository;
 		this.filmRepository = filmRepository;
 		this.actorRepository =actorRepository;
+		this.categoryRepository = categoryRepository;
 	}
 
 	public static void main(String[] args) {
@@ -49,6 +51,13 @@ public class SakilaMicroserviceApplication {
 	public @ResponseBody
 	Iterable<Actor>getAllActors(){
 		return actorRepository.findAll();
+	}
+
+	@GetMapping("/allcategories")
+	public @ResponseBody
+	Iterable<Category>getAllCategories(){
+		return categoryRepository.findAll();
+
 	}
 
 

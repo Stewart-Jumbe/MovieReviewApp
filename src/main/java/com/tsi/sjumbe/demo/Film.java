@@ -17,19 +17,23 @@ public class Film {
     private String description;
     private String rating;
     private int release_year;
-    private float film_length;
+    private float length;
 
     //blank constructor
     public Film(){
 
     }
 
-    public Film(String title, String description, String rating, int release_year, float film_length){
+    public Film(String title,
+                String description,
+                String rating,
+                int release_year,
+                int length){
         this.title = title;
         this.description = description;
         this.release_year = release_year;
         this.rating = rating;
-        this.film_length = film_length;
+        this.length = length;
     }
 
     public int getFilm_id() {
@@ -73,11 +77,11 @@ public class Film {
     }
 
     public float getFilm_length() {
-        return film_length;
+        return length;
     }
 
     public void setFilm_length(float film_length) {
 
-        this.film_length = film_length;
+        this.length = film_length;
     }
 }
