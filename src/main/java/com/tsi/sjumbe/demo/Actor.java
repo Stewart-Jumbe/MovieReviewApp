@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name ="actor")
+//@Table(name ="actor")
 public class Actor {
 
     @Id
@@ -16,22 +16,22 @@ public class Actor {
     private String first_Name;
     private String last_Name;
 
-
-    @ManyToMany(mappedBy = "actor", fetch = FetchType.LAZY)
-    private Set<Film> film = new HashSet<>();
+//
+//    @ManyToMany(mappedBy = "actor", fetch = FetchType.LAZY)
+    //private Set<Film> film = new HashSet<>();
 
     //Empty Constructor
     public Actor(){
 
     }
 
-    public Set<Film> getFilms() {
-        return film;
-    }
+//    public Set<Film> getFilms() {
+//        return film;
+//    }
 
-    public void setFilms(Set<Film> films) {
-        this.film = films;
-    }
+//    public void setFilms(Set<Film> films) {
+//        this.film = films;
+//    }
 
     public Actor(String first_Name, String last_Name){
         this.first_Name = first_Name;

@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity//notifys java that this is a table in our database
-@Table(name ="film")
+//@Table(name ="film")
 public class Film  {
 
     @Id
@@ -26,23 +26,24 @@ public class Film  {
     }
 
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "film_actor",
-            joinColumns = {
-                    @JoinColumn(name = "film_id", referencedColumnName = "film_id",
-                            nullable = false, updatable = false)},
-            inverseJoinColumns = {
-                    @JoinColumn(name = "actor_id", referencedColumnName = "actor_id",
-                            nullable = false, updatable = false)})
-    private Set<Actor> actor = new HashSet<>();
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+//    @JoinTable(name = "film_actor",
+//            joinColumns = {
+//                    @JoinColumn(name = "film_id", referencedColumnName = "film_id",
+//                            nullable = false, updatable = false)},
+//            inverseJoinColumns = {
+//                    @JoinColumn(name = "actor_id", referencedColumnName = "actor_id",
+//                            nullable = false, updatable = false)})
 
-    public Set<Actor> getActor() {
-        return actor;
-    }
+    //private Set<Actor> actor = new HashSet<>();
 
-    public void setActors(Set<Actor> actors) {
-        this.actor = actors;
-    }
+//   public Set<Actor> getActor() {
+//        return actor;
+//    }
+
+//    public void setActors(Set<Actor> actors) {
+//        this.actor = actors;
+//    }
 
     public Film(String title,
                 String description,

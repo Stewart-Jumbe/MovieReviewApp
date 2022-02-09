@@ -15,7 +15,7 @@ public class Language {
 
     //Linking our primary key in java to mysql
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int language_id;
 
     //Attributes
@@ -37,5 +37,9 @@ public class Language {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getLanguage_id() {
+        return language_id;
     }
 }

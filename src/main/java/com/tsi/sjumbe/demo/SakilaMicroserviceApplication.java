@@ -24,6 +24,7 @@ public class SakilaMicroserviceApplication {
 										 FilmRepository filmRepository,
 										 ActorRepository actorRepository,
 										 CategoryRepository categoryRepository){
+
 		this.languageRepository = languageRepository;
 		this.filmRepository = filmRepository;
 		this.actorRepository =actorRepository;
@@ -35,7 +36,8 @@ public class SakilaMicroserviceApplication {
 	}
 
 	@PostMapping("/newlanguage")
-	public @ResponseBody String addLanguage(@RequestParam String name){
+	public @ResponseBody
+	String addLanguage(@RequestParam String name){
 		Language addLanguage = new Language(name);
 		languageRepository.save(addLanguage);
 		return save;
