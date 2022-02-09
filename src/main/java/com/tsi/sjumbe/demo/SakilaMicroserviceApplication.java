@@ -42,6 +42,7 @@ public class SakilaMicroserviceApplication {
 		languageRepository.save(addLanguage);
 		return save;
 	}
+
 	//Request to get all languages from
 	@GetMapping("/alllanguages")
 	public @ResponseBody
