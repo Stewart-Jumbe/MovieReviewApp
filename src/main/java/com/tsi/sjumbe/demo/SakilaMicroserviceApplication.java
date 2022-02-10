@@ -31,6 +31,10 @@ public class SakilaMicroserviceApplication {
 		this.categoryRepository = categoryRepository;
 	}
 
+
+	public SakilaMicroserviceApplication(LanguageRepository languageRepository) {
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(SakilaMicroserviceApplication.class, args);
 	}
