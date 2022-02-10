@@ -23,6 +23,19 @@ public class Film implements Serializable {
     private float length;
 
 
+    public Film(String title,
+                String description,
+                String rating,
+                int release_year,
+                int length){
+
+        this.title = title;
+        this.description = description;
+        this.release_year = release_year;
+        this.rating = rating;
+        this.length = length;
+    }
+
     //blank constructor
     public Film(){
 
@@ -49,19 +62,11 @@ public class Film implements Serializable {
         this.actor = actors;
     }
 
-    public Film(String title,
-                String description,
-                String rating,
-                int release_year,
-                int length){
 
-        this.title = title;
-        this.description = description;
-        this.release_year = release_year;
-        this.rating = rating;
-        this.length = length;
+
+    public void setFilm_id(int film_id){
+       this.film_id = film_id;
     }
-
 
     public int getFilm_id() {
         return film_id;

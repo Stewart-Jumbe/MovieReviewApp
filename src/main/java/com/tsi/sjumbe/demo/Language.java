@@ -40,4 +40,9 @@ public class Language {
     public int getLanguage_id() {
         return language_id;
     }
+
+    public void setLanguage_id(int newID) {
+
+    this.language_id = newID;}
 }
+

@@ -4,8 +4,8 @@ import com.tsi.sjumbe.demo.Language;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LanguageTest {
 
@@ -14,25 +14,22 @@ public class LanguageTest {
 
     @Test
     public void test_constructor(){
-        assertTrue("Its not an instance of Language",language instanceof Language);
+
+        assertTrue(language instanceof Language,"Its not an instance of Language");
     }
 
     @Test
     public void test_getName(){
         language.setName("testname");
-        assertEquals("testname",language.getName());
+        assertEquals("testname",language.getName(),"Get Name method is not working");
+    }
 
-
+    @Test
+    public void test_getLanguage_id(){
+        language.setLanguage_id(9);
+        assertEquals(9,language.getLanguage_id(),"Get Method is not working");
     }
 
 
-    @SpringBootTest
-    static
-    class SakilaMicroserviceApplicationTests {
 
-    //	@Test
-    //	void contextLoads() {
-    //	}
-
-    }
 }

@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @SpringBootApplication
 @RestController
 @RequestMapping("/home")
@@ -32,13 +34,11 @@ public class SakilaMicroserviceApplication {
 	}
 
 
-	public SakilaMicroserviceApplication(LanguageRepository languageRepository) {
-	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(SakilaMicroserviceApplication.class, args);
 	}
 
+	//****-LANGUAGE-****////
 	@PostMapping("/newlanguage")
 	public @ResponseBody
 	String addLanguage(@RequestParam String name){
@@ -54,6 +54,9 @@ public class SakilaMicroserviceApplication {
 		return languageRepository.findAll();
 	}
 
+	//****LANGUAGE****////
+
+	//****-FILMS-****////
 
 	//@Responsebody is the response that will be given when get request is posted
 	@GetMapping("/allfilms")
@@ -62,18 +65,30 @@ public class SakilaMicroserviceApplication {
 		return filmRepository.findAll();
 	}
 
+	@GetMapping("/getfilm/{film_id}")
+	public @ResponseBody
+	Optional<Film> getFilmByID(@PathVariable int film_id){
+		return filmRepository.findById(film_id);
+	}
+
+	//****FILMS****////
+
+	//****-ACTORS-****////
 	@GetMapping("/allactors")
 	public @ResponseBody
 	Iterable<Actor>getAllActors(){
 		return actorRepository.findAll();
 	}
+	//****ACTORS****////
 
+	//****-CATEGORIES-****////
 	@GetMapping("/allcategories")
 	public @ResponseBody
 	Iterable<Category>getAllCategories(){
 		return categoryRepository.findAll();
-
 	}
+	//****CATEGORIES****////
+
 
 
 
