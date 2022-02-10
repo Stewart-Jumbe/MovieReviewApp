@@ -5,7 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 @RestController
@@ -45,6 +47,14 @@ public class SakilaMicroserviceApplication {
 		Language addLanguage = new Language(name);
 		languageRepository.save(addLanguage);
 		return save;
+	}
+
+	//Delete a language
+	@DeleteMapping("/removelanguage/{language_id}")
+	public @ResponseBody
+	String removeLanguageByID(@PathVariable int language_id){
+		Optional<Language> languageName = languageRepository.findById(language_id);
+		return "The language wtih ID "+language_id +" has been deleted";
 	}
 
 	//Request to get all languages from
@@ -87,6 +97,13 @@ public class SakilaMicroserviceApplication {
 	Iterable<Actor>getAllActors(){
 		return actorRepository.findAll();
 	}
+
+	@PostMapping("/newactor")
+	public @ResponseBody
+	String addActor(@RequestParam String first_name,@RequestParam  String last_name ){
+		Actor newActor = new Actor(first_name,last_name);
+		actorRepository.save(newActor);
+		return "New actor saved";}
 	//****ACTORS****////
 
 	//****-CATEGORIES-****////

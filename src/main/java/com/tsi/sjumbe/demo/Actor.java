@@ -12,55 +12,60 @@ import java.util.Set;
 public class Actor implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int actor_id;
 
     //Attributes
-    private String first_Name;
-    private String last_Name;
+    private String first_name;
+    private String last_name;
 
 
     @ManyToMany(mappedBy = "actor", fetch = FetchType.LAZY)
     @JsonIgnore
     private Set<Film> films = new HashSet<>();
 
-    //Empty Constructor
-    public Actor(){
-
-    }
-
-
+    //needed to Many to Many mapping
     public Set<Film> getFilms() {
         return films;
     }
-
     public void setFilms(Set<Film> films) {
         this.films = films;
     }
 
-    public Actor(String first_Name, String last_Name){
-        this.first_Name = first_Name;
-        this.last_Name= last_Name;
+
+    public Actor(String first_name, String last_name){
+        this.first_name = first_name;
+        this.last_name= last_name;
     }
+
+    //Empty Constructor
+    public Actor(){
+    }
+
+    //Getters and Setters
+
 
     public int getActor_id() {
         return actor_id;
     }
 
-
-    public String getFirst_Name() {
-        return first_Name;
+    public void setActor_id(int actor_id) {
+        this.actor_id = actor_id;
     }
 
-    public void setFirst_Name(String first_Name) {
-        this.first_Name = first_Name;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public String getLast_Name() {
-        return last_Name;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
-    public void setLast_Name(String last_Name) {
-        this.last_Name = last_Name;
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 }
