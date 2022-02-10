@@ -12,7 +12,7 @@ import java.util.Set;
 public class Film implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int film_id;
 
     //Attributes
@@ -21,19 +21,27 @@ public class Film implements Serializable {
     private String rating;
     private int release_year;
     private float length;
+    private int language_id;
+
+    //Needed to add ManyToOne connection to get language information
+    @ManyToOne
+    @JoinColumn(name ="original_language_id", insertable = false, updatable = false)
+    private Language original_language;
 
 
     public Film(String title,
                 String description,
                 String rating,
                 int release_year,
-                int length){
+                int length,
+                int language_id){
 
         this.title = title;
         this.description = description;
         this.release_year = release_year;
         this.rating = rating;
         this.length = length;
+        this.language_id = language_id;
     }
 
     //blank constructor
@@ -41,6 +49,13 @@ public class Film implements Serializable {
 
     }
 
+    public int getLanguage_id() {
+        return language_id;
+    }
+
+    public void setLanguage_id(int language_id) {
+        this.language_id = language_id;
+    }
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(name = "film_actor",
@@ -60,6 +75,10 @@ public class Film implements Serializable {
 
     public void setActors(Set<Actor> actors) {
         this.actor = actors;
+    }
+
+    public void setActor(Set<Actor> actor) {
+        this.actor = actor;
     }
 
 
@@ -116,4 +135,25 @@ public class Film implements Serializable {
 
         this.length = film_length;
     }
+
+    public float getLength() {
+        return length;
+    }
+
+    public void setLength(float length) {
+        this.length = length;
+    }
+
+    public Language getOriginal_language() {
+        return original_language;
+    }
+    public void setOriginal_language(Language original_language) {
+        this.original_language = original_language;
+    }
+
+
+
+
+
+
 }

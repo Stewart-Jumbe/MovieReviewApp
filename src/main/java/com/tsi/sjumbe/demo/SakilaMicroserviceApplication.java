@@ -71,6 +71,14 @@ public class SakilaMicroserviceApplication {
 		return filmRepository.findById(film_id);
 	}
 
+
+	@PostMapping("/addfilm")
+	public @ResponseBody String addFilm(@RequestParam String title, String description, String rating, int release_year, int length, int language_id ){
+		Film addFilm = new Film(title,description,rating,release_year,length,language_id);
+		filmRepository.save(addFilm);
+		return save;
+	}
+
 	//****FILMS****////
 
 	//****-ACTORS-****////

@@ -1,12 +1,11 @@
 package com.tsi.sjumbe.demo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeId;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Language {
@@ -15,6 +14,12 @@ public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int language_id;
+
+    //Setting up many to many with language category
+    @OneToMany
+    @JoinColumn(name ="language_id",insertable = false,updatable = false)
+    @JsonIgnore
+    private Set<Film> film;
 
     //Attributes
     private String name;
@@ -43,6 +48,15 @@ public class Language {
 
     public void setLanguage_id(int newID) {
 
-    this.language_id = newID;}
+    this.language_id = newID;
+    }
+
+    public Set<Film>getFilm(){
+        return film;
+    }
+
+    public void setFilm(Set<Film> film) {
+        this.film = film;
+    }
 }
 
