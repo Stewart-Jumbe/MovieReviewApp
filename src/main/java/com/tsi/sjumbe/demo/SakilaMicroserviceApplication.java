@@ -130,6 +130,12 @@ public class SakilaMicroserviceApplication {
 		return save;
 	}
 
+	@DeleteMapping("/removereview/{user_review_id}")
+	public @ResponseBody String removeReviewByID(@PathVariable int user_review_id){
+		userReviewRepository.deleteById(user_review_id);
+		return "The review with ID "+user_review_id +" has been deleted";
+	}
+
 
 
 

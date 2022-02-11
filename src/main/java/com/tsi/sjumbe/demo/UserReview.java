@@ -3,40 +3,28 @@ package com.tsi.sjumbe.demo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Set;
 
 @Entity
-@Table(name ="userreview")
-public class UserReview implements Serializable {
+@Table(name = "userreview")
+public class UserReview {
 
-    //Linking our primary key in java to mysql
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int user_review_id;
-
-    //Attributes//
-    private String userReview;
     private int film_film_id;
+    private String userreview;
 
-    //Setting up many to one with film category
     @ManyToOne
-    @JoinColumn(name ="film_film_id",insertable = false,nullable = false,updatable = false)
+    @JsonIgnore
+    @JoinColumn(name ="film_film_id", insertable = false, nullable = false, updatable = false)
     private Film film;
 
+    public UserReview(){}
 
-    //Empty constructor
-    public UserReview(){
+    public UserReview(String userreview, int film_film_id){
+        this.film_film_id =film_film_id;
+        this.userreview = userreview;}
 
-    }
-
-    //General Constructor
-    public UserReview(String userReview, int film_id){
-        this.userReview = userReview;
-        this.film_film_id = film_film_id;
-    }
-
-    //Getters and Setters
     public int getUser_review_id() {
         return user_review_id;
     }
@@ -53,15 +41,13 @@ public class UserReview implements Serializable {
         this.film_film_id = film_film_id;
     }
 
-    public String getUserReview() {
-        return userReview;
+    public String getUserreview() {
+        return userreview;
     }
 
-    public void setUserReview(String userReview) {
-        this.userReview = userReview;
+    public void setUserreview(String userreview) {
+        this.userreview = userreview;
     }
-//Need to add Many to one relationship with film table
-
 
     public Film getFilm() {
         return film;
