@@ -21,7 +21,7 @@ public class Film implements Serializable {
     private String rating;
     private int release_year;
     private float length;
-    //private int language_id;
+    private int language_id;
 
     //Needed to add ManyToOne connection to get language information
     @ManyToOne
@@ -41,7 +41,7 @@ public class Film implements Serializable {
         this.release_year = release_year;
         this.rating = rating;
         this.length = length;
-        //this.language_id = language_id;
+        this.language_id = language_id;
     }
 
     //blank constructor
@@ -53,9 +53,9 @@ public class Film implements Serializable {
 //        return language_id;
 //    }
 
-//    public void setLanguage_id(int language_id) {
-//        this.language_id = language_id;
-//    }
+    public void setLanguage_id(int language_id) {
+        this.language_id = language_id;
+    }
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(name = "film_actor",
