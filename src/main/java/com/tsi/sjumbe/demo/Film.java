@@ -6,6 +6,7 @@ import org.apache.catalina.User;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity//notifys java that this is a table in our database
@@ -29,9 +30,10 @@ public class Film implements Serializable {
     @JoinColumn(name ="language_id", insertable = false, updatable = false)
     private Language language;
 
-//    //Needed to add OnetoMany connection to get userreview table
-//    @OneToMany(mappedBy = "film")
-//    private Set<UserReview>userReview = new HashSet<>();
+    //Needed to add OnetoMany connection to get userreview table
+    @OneToMany(mappedBy = "film")
+    private List<UserReview> review;
+    //private Set<UserReview>userReview = new HashSet<>();
 
 
 
@@ -71,18 +73,15 @@ public class Film implements Serializable {
             inverseJoinColumns = {
                     @JoinColumn(name = "actor_id", referencedColumnName = "actor_id",
                             nullable = false, updatable = false)})
-
     private Set<Actor> actor = new HashSet<>();
-   public Set<Actor> getActor() {
+
+    public Set<Actor> getActor() {
         return actor;
     }
-    public void setActors(Set<Actor> actors) {
-        this.actor = actors;
-    }
+
     public void setActor(Set<Actor> actor) {
         this.actor = actor;
     }
-
 
 
     public void setFilm_id(int film_id){
@@ -146,15 +145,6 @@ public class Film implements Serializable {
         this.length = length;
     }
 
-
-
-
-//    public int getLanguage_id() {
-//        return language_id;
-//    }
-
-
-
     public Language getLanguage() {
         return language;
     }
@@ -162,8 +152,16 @@ public class Film implements Serializable {
     public void setLanguage(Language language) {
         this.language = language;
     }
-//
-//    public Set<UserReview> getUserReview() {
+
+    public List<UserReview> getReview() {
+        return review;
+    }
+
+    public void setReview(List<UserReview> review) {
+        this.review = review;
+    }
+
+    //    public Set<UserReview> getUserReview() {
 //        return userReview;
 //    }
 //

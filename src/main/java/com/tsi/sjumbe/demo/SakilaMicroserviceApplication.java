@@ -22,23 +22,23 @@ public class SakilaMicroserviceApplication {
 	private ActorRepository actorRepository;
 	@Autowired
 	private CategoryRepository categoryRepository;
-//	@Autowired
-//	private UserReviewRepository userReviewRepository;
+	@Autowired
+	private UserReviewRepository userReviewRepository;
 
 	private String save="save";
 
 	public SakilaMicroserviceApplication(LanguageRepository languageRepository,
 										 FilmRepository filmRepository,
 										 ActorRepository actorRepository,
-										 CategoryRepository categoryRepository
-										//UserReviewRepository userReviewRepository
+										 CategoryRepository categoryRepository,
+										UserReviewRepository userReviewRepository
 										 ){
 
 		this.languageRepository = languageRepository;
 		this.filmRepository = filmRepository;
 		this.actorRepository =actorRepository;
 		this.categoryRepository = categoryRepository;
-		//this.userReviewRepository = userReviewRepository;
+		this.userReviewRepository = userReviewRepository;
 	}
 
 
@@ -120,6 +120,15 @@ public class SakilaMicroserviceApplication {
 
 
 	//****CATEGORIES****////
+
+	//-USerReviews-//
+	@PostMapping("/addreview")
+	public @ResponseBody
+	String addReview(@RequestParam String userReview, int film_film_id){
+		UserReview addReview=new UserReview(userReview,film_film_id);
+		userReviewRepository.save(addReview);
+		return save;
+	}
 
 
 
