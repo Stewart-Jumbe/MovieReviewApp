@@ -29,9 +29,9 @@ public class Film implements Serializable {
     @JoinColumn(name ="language_id", insertable = false, updatable = false)
     private Language language;
 
-    //Needed to add OnetoMany connection to get userreview table
-    @OneToMany(mappedBy = "film")
-    private Set<UserReview>userReview = new HashSet<>();
+//    //Needed to add OnetoMany connection to get userreview table
+//    @OneToMany(mappedBy = "film")
+//    private Set<UserReview>userReview = new HashSet<>();
 
 
 
@@ -55,9 +55,9 @@ public class Film implements Serializable {
 
     }
 
-//    public int getLanguage_id() {
-//        return language_id;
-//    }
+    public int getLanguage_id() {
+        return language_id;
+    }
 
     public void setLanguage_id(int language_id) {
         this.language_id = language_id;
@@ -73,16 +73,12 @@ public class Film implements Serializable {
                             nullable = false, updatable = false)})
 
     private Set<Actor> actor = new HashSet<>();
-
-
    public Set<Actor> getActor() {
         return actor;
     }
-
     public void setActors(Set<Actor> actors) {
         this.actor = actors;
     }
-
     public void setActor(Set<Actor> actor) {
         this.actor = actor;
     }
@@ -150,16 +146,14 @@ public class Film implements Serializable {
         this.length = length;
     }
 
-    public Language getlanguage() {
-        return language;
-    }
-    public void setOriginal_language(Language original_language) {
-        this.language = language;
-    }
 
-    public int getLanguage_id() {
-        return language_id;
-    }
+
+
+//    public int getLanguage_id() {
+//        return language_id;
+//    }
+
+
 
     public Language getLanguage() {
         return language;
@@ -168,12 +162,12 @@ public class Film implements Serializable {
     public void setLanguage(Language language) {
         this.language = language;
     }
-
-    public Set<UserReview> getUserReview() {
-        return userReview;
-    }
-
-    public void setUserReview(Set<UserReview> userReview) {
-        this.userReview = userReview;
-    }
+//
+//    public Set<UserReview> getUserReview() {
+//        return userReview;
+//    }
+//
+//    public void setUserReview(Set<UserReview> userReview) {
+//        this.userReview = userReview;
+//    }
 }

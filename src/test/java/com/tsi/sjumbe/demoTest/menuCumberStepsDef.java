@@ -26,8 +26,8 @@ public class menuCumberStepsDef {
     private ActorRepository actorRepository;
     @Mock
     private CategoryRepository categoryRepository;
-    @Mock
-    private UserReviewRepository userReviewRepository;
+//    @Mock
+//    private UserReviewRepository userReviewRepository;
 
     @BeforeEach // creating an instance of our db with no data
     void Setup(){
@@ -36,12 +36,13 @@ public class menuCumberStepsDef {
         actorRepository = mock(ActorRepository.class);
         filmRepository = mock(FilmRepository.class);
         categoryRepository = mock(CategoryRepository.class);
-        userReviewRepository =mock(UserReviewRepository.class);
+        //userReviewRepository =mock(UserReviewRepository.class);
         sakilaMicroserviceApplication = new SakilaMicroserviceApplication(languageRepository,
                 filmRepository,
                 actorRepository ,
-                categoryRepository,
-                userReviewRepository);
+                categoryRepository
+                //userReviewRepository
+                );
 
 
     }

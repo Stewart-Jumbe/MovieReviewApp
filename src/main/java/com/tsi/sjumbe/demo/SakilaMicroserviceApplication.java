@@ -22,22 +22,23 @@ public class SakilaMicroserviceApplication {
 	private ActorRepository actorRepository;
 	@Autowired
 	private CategoryRepository categoryRepository;
-	@Autowired
-	private UserReviewRepository userReviewRepository;
+//	@Autowired
+//	private UserReviewRepository userReviewRepository;
 
 	private String save="save";
 
 	public SakilaMicroserviceApplication(LanguageRepository languageRepository,
 										 FilmRepository filmRepository,
 										 ActorRepository actorRepository,
-										 CategoryRepository categoryRepository,
-										UserReviewRepository userReviewRepository){
+										 CategoryRepository categoryRepository
+										//UserReviewRepository userReviewRepository
+										 ){
 
 		this.languageRepository = languageRepository;
 		this.filmRepository = filmRepository;
 		this.actorRepository =actorRepository;
 		this.categoryRepository = categoryRepository;
-		this.userReviewRepository = userReviewRepository;
+		//this.userReviewRepository = userReviewRepository;
 	}
 
 
@@ -57,7 +58,7 @@ public class SakilaMicroserviceApplication {
 	//Delete a language
 	@DeleteMapping("/removelanguage/{language_id}")
 	public @ResponseBody String removeLanguageByID(@PathVariable int language_id){
-		Optional<Language> languageName = languageRepository.findById(language_id);
+		languageRepository.deleteById(language_id);
 		return "The language with ID "+language_id +" has been deleted";
 	}
 

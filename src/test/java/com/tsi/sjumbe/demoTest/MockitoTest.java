@@ -21,16 +21,17 @@ public class MockitoTest {
     private ActorRepository actorRepository;
     @Mock
     private CategoryRepository categoryRepository;
-    @Mock
-    private UserReviewRepository userReviewRepository;
+//    @Mock
+//    private UserReviewRepository userReviewRepository;
 
     @BeforeEach // creating an instance of our db with no data
     void Setup(){
         sakilaMicroserviceApplication = new SakilaMicroserviceApplication(languageRepository,
                 filmRepository,
                 actorRepository,
-                categoryRepository,
-                userReviewRepository);
+                categoryRepository
+                //userReviewRepository
+        );
     }
 
     ///Testing Post Request to addLanguage
