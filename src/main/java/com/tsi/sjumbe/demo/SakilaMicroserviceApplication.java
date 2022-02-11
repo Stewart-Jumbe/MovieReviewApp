@@ -54,7 +54,7 @@ public class SakilaMicroserviceApplication {
 	public @ResponseBody
 	String removeLanguageByID(@PathVariable int language_id){
 		Optional<Language> languageName = languageRepository.findById(language_id);
-		return "The language wtih ID "+language_id +" has been deleted";
+		return "The language with ID "+language_id +" has been deleted";
 	}
 
 	//Request to get all languages from
@@ -112,6 +112,8 @@ public class SakilaMicroserviceApplication {
 	Iterable<Category>getAllCategories(){
 		return categoryRepository.findAll();
 	}
+
+
 	//****CATEGORIES****////
 
 
