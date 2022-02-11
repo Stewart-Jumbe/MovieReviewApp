@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name ="language")
 public class Language {
 
     //Linking our primary key in java to mysql

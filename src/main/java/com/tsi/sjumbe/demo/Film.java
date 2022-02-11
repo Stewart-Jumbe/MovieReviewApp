@@ -1,6 +1,7 @@
 package com.tsi.sjumbe.demo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.apache.catalina.User;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -27,6 +28,11 @@ public class Film implements Serializable {
     @ManyToOne
     @JoinColumn(name ="language_id", insertable = false, updatable = false)
     private Language language;
+
+    //Needed to add OnetoMany connection to get userreview table
+    @OneToMany(mappedBy = "film")
+    private Set<UserReview>userReview = new HashSet<>();
+
 
 
     public Film(String title,
@@ -151,9 +157,23 @@ public class Film implements Serializable {
         this.language = language;
     }
 
+    public int getLanguage_id() {
+        return language_id;
+    }
 
+    public Language getLanguage() {
+        return language;
+    }
 
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
 
+    public Set<UserReview> getUserReview() {
+        return userReview;
+    }
 
-
+    public void setUserReview(Set<UserReview> userReview) {
+        this.userReview = userReview;
+    }
 }
