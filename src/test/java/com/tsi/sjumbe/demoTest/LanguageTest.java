@@ -1,8 +1,12 @@
 package com.tsi.sjumbe.demoTest;
 
+import com.tsi.sjumbe.demo.Film;
 import com.tsi.sjumbe.demo.Language;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -10,11 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class LanguageTest {
 
     private Language language= new Language();
-
+   // private Set<Film>film = new HashSet<Film>()
 
     @Test
     public void test_constructor(){
-
         assertTrue(language instanceof Language,"Its not an instance of Language");
     }
 
@@ -29,6 +32,8 @@ public class LanguageTest {
         language.setLanguage_id(9);
         assertEquals(9,language.getLanguage_id(),"Get Method is not working");
     }
+
+
 
 
 
