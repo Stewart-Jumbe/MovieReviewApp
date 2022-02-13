@@ -20,7 +20,7 @@ public class UserReview {
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name ="film_film_id", insertable = false, nullable = false, updatable = false)
-    private Film film;
+    private Film film; // No need for getters and setters for film
 
     public UserReview(){}
 
@@ -54,14 +54,6 @@ public class UserReview {
 
     public void setUser_review(String user_review) {
         this.user_review = user_review;
-    }
-
-    public Film getFilm() {
-        return film;
-    }
-
-    public void setFilm(Film film) {
-        this.film = film;
     }
 
     public int getStar_rating() {
