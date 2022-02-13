@@ -33,7 +33,7 @@ public class Film implements Serializable {
     //Needed to add OnetoMany connection to get userreview table
     @OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
     private Set<UserReview>userReview = new HashSet<>();
-    //private List<UserReview> review;
+
 
 
     public Film(String title,
@@ -127,15 +127,6 @@ public class Film implements Serializable {
         this.release_year = release_year;
     }
 
-    public float getFilm_length() {
-        return length;
-    }
-
-    public void setFilm_length(float film_length) {
-
-        this.length = film_length;
-    }
-
     public float getLength() {
         return length;
     }
@@ -152,13 +143,6 @@ public class Film implements Serializable {
         this.language = language;
     }
 
-//    public List<UserReview> getReview() {
-//        return review;
-//    }
-//
-//    public void setReview(List<UserReview> review) {
-//        this.review = review;
-//    }
 
         public Set<UserReview> getUserReview() {
         return userReview;

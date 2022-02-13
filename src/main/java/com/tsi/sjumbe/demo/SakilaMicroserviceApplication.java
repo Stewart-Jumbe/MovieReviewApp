@@ -47,7 +47,7 @@ public class SakilaMicroserviceApplication {
 	}
 
 	//****-LANGUAGE-****////
-	@PostMapping("/newlanguage")
+	@PostMapping("/Add_Language")
 	public @ResponseBody
 	String addLanguage(@RequestParam String name){
 		Language addLanguage = new Language(name);
@@ -56,14 +56,14 @@ public class SakilaMicroserviceApplication {
 	}
 
 	//Delete a language
-	@DeleteMapping("/removelanguage/{language_id}")
+	@DeleteMapping("/Remove_Language/{language_id}")
 	public @ResponseBody String removeLanguageByID(@PathVariable int language_id){
 		languageRepository.deleteById(language_id);
 		return "The language with ID "+language_id +" has been deleted";
 	}
 
 	//Request to get all languages from
-	@GetMapping("/alllanguages")
+	@GetMapping("/All_Languages")
 	public @ResponseBody
 	Iterable<Language>getAllLanguages(){
 		return languageRepository.findAll();
@@ -74,20 +74,20 @@ public class SakilaMicroserviceApplication {
 	//****-FILMS-****////
 
 	//@Responsebody is the response that will be given when get request is posted
-	@GetMapping("/allfilms")
+	@GetMapping("/All_Films")
 	public @ResponseBody
 	Iterable<Film>getAllFilms(){
 		return filmRepository.findAll();
 	}
 
-	@GetMapping("/getfilm/{film_id}")
+	@GetMapping("/Get_Film/{film_id}")
 	public @ResponseBody
 	Optional<Film> getFilmByID(@PathVariable int film_id){
 		return filmRepository.findById(film_id);
 	}
 
 
-	@PostMapping("/addfilm")
+	@PostMapping("/Add_Film")
 	public @ResponseBody String addFilm(@RequestParam String title, String description, String rating, int release_year, int length, int language_id ){
 		Film addFilm = new Film(title,description,rating,release_year,length,language_id);
 		filmRepository.save(addFilm);
@@ -97,13 +97,13 @@ public class SakilaMicroserviceApplication {
 	//****FILMS****////
 
 	//****-ACTORS-****////
-	@GetMapping("/allactors")
+	@GetMapping("/All_Actors")
 	public @ResponseBody
 	Iterable<Actor>getAllActors(){
 		return actorRepository.findAll();
 	}
 
-	@PostMapping("/newactor")
+	@PostMapping("/Add_Actor")
 	public @ResponseBody
 	String addActor(@RequestParam String first_name,@RequestParam  String last_name ){
 		Actor newActor = new Actor(first_name,last_name);
@@ -112,7 +112,7 @@ public class SakilaMicroserviceApplication {
 	//****ACTORS****////
 
 	//****-CATEGORIES-****////
-	@GetMapping("/allcategories")
+	@GetMapping("/All_Categories")
 	public @ResponseBody
 	Iterable<Category>getAllCategories(){
 		return categoryRepository.findAll();
@@ -122,15 +122,22 @@ public class SakilaMicroserviceApplication {
 	//****CATEGORIES****////
 
 	//-USerReviews-//
-	@PostMapping("/addreview")
+	@GetMapping("/All_Reviews")
 	public @ResponseBody
-	String addReview(@RequestParam String userReview, int film_film_id){
-		UserReview addReview=new UserReview(userReview,film_film_id);
+	Iterable<UserReview>getAllReviews(){
+		return userReviewRepository.findAll();
+	}
+
+
+	@PostMapping("/Add_Review")
+	public @ResponseBody
+	String addReview(@RequestParam int film_film_id,String user_review,int star_rating,int reviewer_age, String reviewer_sex){
+		UserReview addReview=new UserReview(film_film_id,user_review,star_rating, reviewer_age,reviewer_sex);
 		userReviewRepository.save(addReview);
 		return save;
 	}
 
-	@DeleteMapping("/removereview/{user_review_id}")
+	@DeleteMapping("/Remove_Review/{user_review_id}")
 	public @ResponseBody String removeReviewByID(@PathVariable int user_review_id){
 		userReviewRepository.deleteById(user_review_id);
 		return "The review with ID "+user_review_id +" has been deleted";

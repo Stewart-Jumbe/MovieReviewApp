@@ -22,15 +22,9 @@ public class Actor implements Serializable {
 
     @ManyToMany(mappedBy = "actor", fetch = FetchType.LAZY)
     @JsonIgnore
-    private Set<Film> films = new HashSet<>();
+    private Set<Film> film = new HashSet<>();
 
-    //needed to Many to Many mapping
-    public Set<Film> getFilms() {
-        return films;
-    }
-    public void setFilms(Set<Film> films) {
-        this.films = films;
-    }
+
 
 
     public Actor(String first_name, String last_name){
@@ -43,6 +37,14 @@ public class Actor implements Serializable {
     }
 
     //Getters and Setters
+
+    //needed to Many to Many mapping
+    public Set<Film> getFilm() {
+        return film;
+    }
+    public void setFilm(Set<Film> films) {
+        this.film = films;
+    }
 
 
     public int getActor_id() {
@@ -68,4 +70,6 @@ public class Actor implements Serializable {
     public void setLast_name(String last_name) {
         this.last_name = last_name;
     }
+
+
 }

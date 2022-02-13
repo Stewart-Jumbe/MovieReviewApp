@@ -12,7 +12,10 @@ public class UserReview {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int user_review_id;
     private int film_film_id;
-    private String userreview;
+    private String user_review;
+    private int star_rating;
+    private int reviewer_age;
+    private  String reviewer_sex;
 
     @ManyToOne
     @JsonIgnore
@@ -21,9 +24,13 @@ public class UserReview {
 
     public UserReview(){}
 
-    public UserReview(String userreview, int film_film_id){
+    public UserReview(int film_film_id, String user_review, int star_rating, int reviewer_age, String reviewer_sex ){
         this.film_film_id =film_film_id;
-        this.userreview = userreview;}
+        this.user_review = user_review;
+        this.star_rating = star_rating;
+        this.reviewer_age = reviewer_age;
+        this.reviewer_sex = reviewer_sex;
+    }
 
     public int getUser_review_id() {
         return user_review_id;
@@ -41,12 +48,12 @@ public class UserReview {
         this.film_film_id = film_film_id;
     }
 
-    public String getUserreview() {
-        return userreview;
+    public String getUser_review() {
+        return user_review;
     }
 
-    public void setUserreview(String userreview) {
-        this.userreview = userreview;
+    public void setUser_review(String user_review) {
+        this.user_review = user_review;
     }
 
     public Film getFilm() {
@@ -55,5 +62,30 @@ public class UserReview {
 
     public void setFilm(Film film) {
         this.film = film;
+    }
+
+    public int getStar_rating() {
+        return star_rating;
+    }
+
+    public void setStar_rating(int star_rating) {
+
+        this.star_rating = star_rating;
+    }
+
+    public int getReviewer_age() {
+        return reviewer_age;
+    }
+
+    public void setReviewer_age(int reviewer_age) {
+        this.reviewer_age = reviewer_age;
+    }
+
+    public String getReviewer_sex() {
+        return reviewer_sex;
+    }
+
+    public void setReviewer_sex(String reviewer_sex) {
+        this.reviewer_sex = reviewer_sex;
     }
 }
