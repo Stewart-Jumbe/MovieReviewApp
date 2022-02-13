@@ -40,7 +40,7 @@ public class Film implements Serializable {
                 String description,
                 String rating,
                 int release_year,
-                int length,
+                float length,
                 int language_id){
 
         this.title = title;
