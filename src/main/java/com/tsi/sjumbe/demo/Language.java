@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeId;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name ="language")
-public class Language {
+public class Language implements Serializable {
 
     //Linking our primary key in java to mysql
     @Id

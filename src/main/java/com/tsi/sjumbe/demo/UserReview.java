@@ -3,10 +3,11 @@ package com.tsi.sjumbe.demo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "userreview")
-public class UserReview {
+public class UserReview implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

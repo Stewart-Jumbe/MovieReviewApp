@@ -8,7 +8,14 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)//inhereting characteristics needed to use mockito
 public class MockitoTest {
@@ -118,6 +125,69 @@ public class MockitoTest {
 
         actorArgumentCaptor.getValue();
         Assertions.assertEquals(expected,actual,"Actor data hasn't been added to mock DB");
+
+    }
+
+
+    //Get Mapping for listing All_languages
+    @Test
+    public void test_GetALLLanguages(){
+            Language testLang1 = new Language("Kwaconda");
+            List<Language> languageList = new ArrayList<>();
+            languageList.add(testLang1);
+            when(sakilaMicroserviceApplication.getAllLanguages()).thenReturn(languageList);
+            Assertions.assertEquals(languageList, sakilaMicroserviceApplication.getAllLanguages(), "Languages data was not saved to Mock DB.");
+    }
+
+    //Get Mapping for listing All_Films
+    @Test
+    public void test_GetALLFilms(){
+        Film testFilm1 = new Film("test title",
+                "test description",
+                "test rating",
+                2001,
+                1,
+                1);
+        List<Film> expectedFilmList = new ArrayList<>();
+        expectedFilmList.add(testFilm1);
+        when(sakilaMicroserviceApplication.getAllFilms()).thenReturn(expectedFilmList);
+        Assertions.assertEquals(expectedFilmList, sakilaMicroserviceApplication.getAllFilms(), "Films data was not saved to Mock DB.");
+    }
+
+    //Get Mapping for listing All_Actors
+    @Test
+    public void test_GetALLActors(){
+        Actor testActor = new Actor("Jojo","Star");
+        List<Actor> expectedActorList = new ArrayList<>();
+        expectedActorList.add(testActor);
+        when(sakilaMicroserviceApplication.getAllActors()).thenReturn(expectedActorList);
+        Assertions.assertEquals(expectedActorList, sakilaMicroserviceApplication.getAllActors(), "Actors data was not saved to Mock DB.");
+    }
+
+    //Get Mapping for listing All_Categories
+    @Test
+    public void test_GetALLCategories(){
+        Category testCategory = new Category("Other");
+        List<Category> expectedCategoryList = new ArrayList<>();
+        expectedCategoryList.add(testCategory);
+        when(sakilaMicroserviceApplication.getAllCategories()).thenReturn(expectedCategoryList);
+        Assertions.assertEquals(expectedCategoryList, sakilaMicroserviceApplication.getAllCategories(), "Categories data was not saved to Mock DB.");
+
+    }
+
+    //Get Mapping for listing All_Reviews
+    @Test
+    public void test_GetALLReviews(){
+        UserReview testReview = new UserReview(
+                2,
+                "test review",
+                5,
+                45,
+                "female");
+        List<UserReview> expectedReviewList = new ArrayList<>();
+        expectedReviewList.add(testReview);
+        when(sakilaMicroserviceApplication.getAllReviews()).thenReturn(expectedReviewList);
+        Assertions.assertEquals(expectedReviewList, sakilaMicroserviceApplication.getAllReviews(), "UserReview data was not saved to Mock DB.");
 
     }
 
