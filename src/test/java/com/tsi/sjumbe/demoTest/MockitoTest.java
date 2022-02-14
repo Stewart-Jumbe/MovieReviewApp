@@ -1,5 +1,6 @@
 package com.tsi.sjumbe.demoTest;
 import com.tsi.sjumbe.demo.*;
+import org.apache.catalina.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -88,6 +89,32 @@ public class MockitoTest {
         ArgumentCaptor<Actor>actorArgumentCaptor = ArgumentCaptor.forClass(Actor.class);
 
         verify(actorRepository).save(actorArgumentCaptor.capture());
+
+        actorArgumentCaptor.getValue();
+        Assertions.assertEquals(expected,actual,"Actor data hasn't been added to mock DB");
+
+    }
+
+    //Testing Post Request to AddReview
+    @Test
+    public void test_AddReview(){
+        UserReview testReview = new UserReview(2,
+                "test review",
+                5,
+                45,
+                "female");
+
+        String expected ="save";
+
+        String actual = sakilaMicroserviceApplication.addReview(testReview.getFilm_film_id(),
+                testReview.getUser_review(),
+                testReview.getStar_rating(),
+                testReview.getReviewer_age(),
+                testReview.getReviewer_sex());
+
+        ArgumentCaptor<UserReview>actorArgumentCaptor = ArgumentCaptor.forClass(UserReview.class);
+
+        verify(userReviewRepository).save(actorArgumentCaptor.capture());
 
         actorArgumentCaptor.getValue();
         Assertions.assertEquals(expected,actual,"Actor data hasn't been added to mock DB");
