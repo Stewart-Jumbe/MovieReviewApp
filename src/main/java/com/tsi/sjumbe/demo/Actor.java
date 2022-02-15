@@ -36,7 +36,7 @@ public class Actor implements Serializable {
 
     //Getters and Setters
 
-    //needed to Many to Many mapping
+    //needed to Many-to-Many mapping
     public Set<Film> getFilm() {
         return film;
     }
