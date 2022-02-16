@@ -1,18 +1,22 @@
 package com.tsi.sjumbe.demo;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+//@EnableAutoConfiguration()
 @SpringBootApplication
 @RestController
 @RequestMapping("/home")
 public class SakilaMicroserviceApplication {
+
+
 
 	@Autowired
 	private LanguageRepository languageRepository;
@@ -142,6 +146,8 @@ public class SakilaMicroserviceApplication {
 		userReviewRepository.deleteById(user_review_id);
 		return "The review with ID "+user_review_id +" has been deleted";
 	}
+
+
 
 
 
