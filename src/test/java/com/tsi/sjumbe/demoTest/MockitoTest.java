@@ -11,8 +11,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -31,6 +33,7 @@ public class MockitoTest {
     private CategoryRepository categoryRepository;
     @Mock
     private UserReviewRepository userReviewRepository;
+    private Object Film;
 
     @BeforeEach // creating an instance of our db with no data
     void Setup(){
@@ -152,6 +155,19 @@ public class MockitoTest {
         expectedFilmList.add(testFilm1);
         when(sakilaMicroserviceApplication.getAllFilms()).thenReturn(expectedFilmList);
         Assertions.assertEquals(expectedFilmList, sakilaMicroserviceApplication.getAllFilms(), "Films data was not saved to Mock DB.");
+    }
+
+    //Get Mapping for listing All_Films
+    @Test
+    public void test_GetFilmByID(){
+        Film testFilm1 = new Film("test title",
+                "test description",
+                "test rating",
+                2001,
+                1,
+                1);
+        when(sakilaMicroserviceApplication.getFilmByID(testFilm1.getFilm_id())).thenReturn(Optional.of(testFilm1));
+        Assertions.assertEquals(sakilaMicroserviceApplication.getFilmByID(testFilm1.getFilm_id()), Optional.of(testFilm1), "Films data was not saved to Mock DB.");
     }
 
     //Get Mapping for listing All_Actors
