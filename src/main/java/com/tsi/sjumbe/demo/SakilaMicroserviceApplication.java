@@ -125,7 +125,7 @@ public class SakilaMicroserviceApplication {
 
 	//****CATEGORIES****////
 
-	//-USerReviews-//
+	//****USerReviews****//
 	@GetMapping("/All_Reviews")
 	public @ResponseBody
 	Iterable<UserReview>getAllReviews(){

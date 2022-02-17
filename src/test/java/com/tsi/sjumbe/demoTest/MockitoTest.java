@@ -131,6 +131,17 @@ public class MockitoTest {
 
     }
 
+    //Testing Delete request , to remove a review by ID
+    @Test
+    public void test_DeleteReview(){
+        UserReview testReview = new UserReview(2,
+                "test review",
+                5,
+                45,
+                "female");
+
+    }
+
 
     //Get Mapping for listing All_languages
     @Test
