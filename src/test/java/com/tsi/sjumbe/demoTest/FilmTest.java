@@ -27,6 +27,11 @@ public class FilmTest {
     private Language testLanguage = new Language();
 
     @Test
+    public void test_Constructor(){
+        assertTrue(film instanceof Film);
+    }
+
+    @Test
     public void test_GetTitle(){
         assertEquals("test title",film.getTitle(),"Get/Set title Method is not working");
     }
