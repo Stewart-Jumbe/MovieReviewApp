@@ -29,14 +29,25 @@ public class FilmTest {
     }
 
     @Test
+    public void test_SetTitle(){
+        film.setTitle("The greatest film");
+        assertEquals("The greatest film",film.getTitle(),"Set title Method is not working");
+    }
+
+    @Test
     public void test_GetDescription(){;
-        assertEquals("test description",film.getDescription(),"Get/Set Description method is not working");
+        assertEquals("test description",film.getDescription(),"Get Description method is not working");
+    }
+    @Test
+    public void test_SetDescription(){;
+        film.setDescription("A film about people");
+        assertEquals("A film about people",film.getDescription(),"Set Description method is not working");
     }
 
 
     @Test
     public void test_GetRating(){
-        assertEquals("test rating",film.getRating(),"Get/Set rating method is not working");
+        assertEquals("test rating",film.getRating(),"Get rating method is not working");
     }
 
     @Test
@@ -47,7 +58,7 @@ public class FilmTest {
 
     @Test
     public void test_GetRelease_year(){
-        assertEquals(2001,film.getRelease_year(),"Get/Set Release_year method not working");
+        assertEquals(2001,film.getRelease_year(),"Get Release_year method not working");
     }
 
     @Test
@@ -69,8 +80,6 @@ public class FilmTest {
 
 
 
-
-
     @Test
     public void test_GetLanguage_id(){
         assertEquals(1,film.getLanguage_id(),"Get Language method is not working");
@@ -83,9 +92,14 @@ public class FilmTest {
     }
 
     @Test
+    public void test_GetFilm_id(){
+        assertEquals(0,film.getFilm_id(),"Set Film_id method is not working" );
+    }
+
+    @Test
     public void test_SetFilm_id(){
         film.setFilm_id(1);
-        assertEquals(1,film.getFilm_id(),"Get/Set Film_id method is not working" );
+        assertEquals(1,film.getFilm_id(),"Set Film_id method is not working" );
     }
 
     @Test
@@ -107,12 +121,28 @@ public class FilmTest {
     }
 
     @Test
+    public void test_setUserReview(){
+        film.setUserReview(testUserReviewSet);
+        assertEquals(testUserReviewSet, film.getUserReview(),"The Set User Review method is not working");
+    }
+
+    @Test
     public void test_getActor(){
         testActorSet.add(new Actor("Rocco","Rain"));
         film.setActor(testActorSet);
         assertEquals(testActorSet,film.getActor(),"Get/Set Actor method is not working");
 
     }
+
+    @Test
+    public void testGetActorSet(){
+        film.setActor(testActorSet);
+        assertEquals(testActorSet, film.getActor(), "The getActor method in Films is not working");
+    }
+
+
+
+
 
 
 
