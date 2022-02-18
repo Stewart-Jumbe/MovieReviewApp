@@ -2,7 +2,9 @@ package com.tsi.sjumbe.demoTest;
 
 import com.tsi.sjumbe.demo.Actor;
 import com.tsi.sjumbe.demo.Film;
+import com.tsi.sjumbe.demo.Language;
 import com.tsi.sjumbe.demo.UserReview;
+import org.aspectj.weaver.patterns.HasThisTypePatternTriedToSneakInSomeGenericOrParameterizedTypePatternMatchingStuffAnywhereVisitor;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -22,6 +24,7 @@ public class FilmTest {
 
     private Set<UserReview> testUserReviewSet = new HashSet<>();
     private Set<Actor> testActorSet = new HashSet<>();
+    private Language testLanguage = new Language();
 
     @Test
     public void test_GetTitle(){
@@ -91,6 +94,7 @@ public class FilmTest {
         assertEquals(5,film.getLanguage_id(),"Set Language method is not working");
     }
 
+
     @Test
     public void test_GetFilm_id(){
         assertEquals(0,film.getFilm_id(),"Set Film_id method is not working" );
@@ -135,11 +139,20 @@ public class FilmTest {
     }
 
     @Test
-    public void testGetActorSet(){
+    public void testSet_Actor(){
         film.setActor(testActorSet);
         assertEquals(testActorSet, film.getActor(), "The getActor method in Films is not working");
     }
+    @Test
+    public void test_GetLanguage(){
+        assertEquals(null,film.getLanguage(),"Get Language method is not working");
+    }
 
+    @Test
+    public void test_SetLanguage(){
+        film.setLanguage(testLanguage);
+        assertEquals(testLanguage, film.getLanguage(),"Set Language method is not working");
+    }
 
 
 
