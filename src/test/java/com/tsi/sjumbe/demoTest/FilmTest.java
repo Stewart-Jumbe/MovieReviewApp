@@ -33,9 +33,16 @@ public class FilmTest {
         assertEquals("test description",film.getDescription(),"Get/Set Description method is not working");
     }
 
+
     @Test
     public void test_GetRating(){
         assertEquals("test rating",film.getRating(),"Get/Set rating method is not working");
+    }
+
+    @Test
+    public void test_SetRating(){
+        film.setRating("Don't bother");
+        assertEquals("Don't bother",film.getRating(),"Set rating method is not working");
     }
 
     @Test
@@ -44,18 +51,39 @@ public class FilmTest {
     }
 
     @Test
-    public void test_GetLength(){
-        assertEquals("test rating",film.getRating(),"Get/Set Length method is not working");
-
+    public void test_SetRelease_year(){
+        film.setRelease_year(1996);
+        assertEquals(1996,film.getRelease_year(),"Its not working");
     }
+
+    @Test
+    public void test_GetLength(){
+        assertEquals(1,film.getLength(),"Get Length method is not working");
+    }
+
+    @Test
+    public void test_SetLength(){
+        film.setLength(60.0f);
+        assertEquals(60,film.getLength(),"Set Length method is not working");
+    }
+
+
+
+
 
     @Test
     public void test_GetLanguage_id(){
-        assertEquals(1,film.getLanguage_id());
+        assertEquals(1,film.getLanguage_id(),"Get Language method is not working");
     }
 
     @Test
-    public void test_GetFilm_id(){
+    public void test_SetLanguage_id(){
+        film.setLanguage_id(5);
+        assertEquals(5,film.getLanguage_id(),"Set Language method is not working");
+    }
+
+    @Test
+    public void test_SetFilm_id(){
         film.setFilm_id(1);
         assertEquals(1,film.getFilm_id(),"Get/Set Film_id method is not working" );
     }

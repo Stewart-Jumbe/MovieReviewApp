@@ -131,15 +131,17 @@ public class MockitoTest {
     }
 
     //Testing Delete request , to remove a review by ID
-    @Test
-    public void test_DeleteReview(){
-        UserReview testReview = new UserReview(2,
-                "test review",
-                5,
-                45,
-                "female");
-
-    }
+//    @Test
+//    public void test_DeleteReview(){
+//        UserReview testReview = new UserReview(2,
+//                "test review",
+//                5,
+//                45,
+//                "female");
+//        userReviewRepository.save(testReview);
+//        when(sakilaMicroserviceApplication.removeReviewByID(testReview.getUser_review_id()).thenReturn(null);
+//
+//    }
 
 
     //Get Mapping for listing All_languages
@@ -148,7 +150,8 @@ public class MockitoTest {
             Language testLang1 = new Language("Kwaconda");
             List<Language> languageList = new ArrayList<>();
             languageList.add(testLang1);
-            when(sakilaMicroserviceApplication.getAllLanguages()).thenReturn(languageList);
+            when(sakilaMicroserviceApplication.getAllLanguages()).
+                    thenReturn(languageList);
             Assertions.assertEquals(languageList, sakilaMicroserviceApplication.getAllLanguages(), "Languages data was not saved to Mock DB.");
     }
 
