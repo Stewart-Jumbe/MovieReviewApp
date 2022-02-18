@@ -1,6 +1,6 @@
 package com.tsi.sjumbe.demoTest;
 import com.tsi.sjumbe.demo.*;
-import org.apache.catalina.User;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,10 +8,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.lang.reflect.Array;
+
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
