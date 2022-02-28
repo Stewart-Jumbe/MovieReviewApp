@@ -17,7 +17,7 @@ public class Language implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int language_id;
 
-    //Setting up many to many with language category
+    //Setting up many to many with language category and film class
     @OneToMany
     @JoinColumn(name ="language_id",insertable = false,updatable = false)
     @JsonIgnore
@@ -30,6 +30,8 @@ public class Language implements Serializable {
     public Language(){
 
     }
+
+
 
     public Language(String name){
         this.name = name; //associating called name with name in DB

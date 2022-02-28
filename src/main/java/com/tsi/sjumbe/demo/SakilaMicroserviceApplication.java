@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-
+@CrossOrigin(origins = "*")//needed for recieving request via api
 @SpringBootApplication
 @RestController
 @RequestMapping("/home")
@@ -47,6 +47,7 @@ public class SakilaMicroserviceApplication {
 	}
 
 	//****-LANGUAGE-****////
+
 	@PostMapping("/Add_Language")
 	public @ResponseBody
 	String addLanguage(@RequestParam String name){
@@ -56,6 +57,7 @@ public class SakilaMicroserviceApplication {
 	}
 
 	//Delete a language
+
 	@DeleteMapping("/Remove_Language/{language_id}")
 	public @ResponseBody String removeLanguageByID(@PathVariable int language_id){
 		languageRepository.deleteById(language_id);
@@ -63,6 +65,7 @@ public class SakilaMicroserviceApplication {
 	}
 
 	//Request to get all languages from
+
 	@GetMapping("/All_Languages")
 	public @ResponseBody
 	Iterable<Language>getAllLanguages(){
@@ -74,11 +77,13 @@ public class SakilaMicroserviceApplication {
 	//****-FILMS-****////
 
 	//@Responsebody is the response that will be given when get request is posted
+
 	@GetMapping("/All_Films")
 	public @ResponseBody
 	Iterable<Film>getAllFilms(){
 		return filmRepository.findAll();
 	}
+
 
 	@GetMapping("/Get_Film/{film_id}")
 	public @ResponseBody
@@ -97,11 +102,13 @@ public class SakilaMicroserviceApplication {
 	//****FILMS****////
 
 	//****-ACTORS-****////
+
 	@GetMapping("/All_Actors")
 	public @ResponseBody
 	Iterable<Actor>getAllActors(){
 		return actorRepository.findAll();
 	}
+
 
 	@PostMapping("/Add_Actor")
 	public @ResponseBody
@@ -112,6 +119,7 @@ public class SakilaMicroserviceApplication {
 	//****ACTORS****////
 
 	//****-CATEGORIES-****////
+
 	@GetMapping("/All_Categories")
 	public @ResponseBody
 	Iterable<Category>getAllCategories(){
@@ -122,12 +130,12 @@ public class SakilaMicroserviceApplication {
 	//****CATEGORIES****////
 
 	//****USerReviews****//
+
 	@GetMapping("/All_Reviews")
 	public @ResponseBody
 	Iterable<UserReview>getAllReviews(){
 		return userReviewRepository.findAll();
 	}
-
 
 	@PostMapping("/Add_Review")
 	public @ResponseBody
@@ -136,6 +144,7 @@ public class SakilaMicroserviceApplication {
 		userReviewRepository.save(addReview);
 		return save;
 	}
+
 
 	@DeleteMapping("/Remove_Review/{user_review_id}")
 	public @ResponseBody String removeReviewByID(@PathVariable int user_review_id){

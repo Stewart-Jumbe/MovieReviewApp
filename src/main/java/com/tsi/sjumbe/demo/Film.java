@@ -30,9 +30,15 @@ public class Film implements Serializable {
     @JoinColumn(name ="language_id", insertable = false, updatable = false)
     private Language language;
 
+
     //Needed to add OnetoMany connection to get userreview table
     @OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
     private Set<UserReview>userReview = new HashSet<>();
+
+    //Needed to add OnetoMany connection to get userreview table
+    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
+    private Set<Category>category = new HashSet<>();;
+
 
 
 
@@ -147,11 +153,19 @@ public class Film implements Serializable {
     }
 
 
-        public Set<UserReview> getUserReview() {
+    public Set<UserReview> getUserReview() {
         return userReview;
     }
 
     public void setUserReview(Set<UserReview> userReview) {
         this.userReview = userReview;
+    }
+
+    public Set<Category> getCategory() {
+        return category;
+    }
+
+    public void setCategory(Set<Category> category) {
+        this.category = category;
     }
 }
