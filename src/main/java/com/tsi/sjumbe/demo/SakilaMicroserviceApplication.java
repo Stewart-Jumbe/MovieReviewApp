@@ -1,4 +1,5 @@
 package com.tsi.sjumbe.demo;
+import com.amazonaws.services.secretsmanager.model.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -152,9 +153,19 @@ public class SakilaMicroserviceApplication {
 		return "The review with ID "+user_review_id +" has been deleted";
 	}
 
+	@PutMapping("/updatereview/{user_review_id}")
+	public @ResponseBody
+	String updateReview(@PathVariable int user_review_id, @RequestParam String user_review, int star_rating){
 
+		UserReview updateReview = userReviewRepository.findById(user_review_id).orElseThrow(() ->new ResourceNotFoundException("Review id not found"));
 
-
+		updateReview.setUser_review(user_review);
+		updateReview.setStar_rating(star_rating);
+		//Saving the updated info
+		final UserReview updatedReview = userReviewRepository.save(updateReview);
+		//Returining updated record
+		return updatedReview.getUser_review() + updateReview.getStar_rating();
+	}
 
 
 
