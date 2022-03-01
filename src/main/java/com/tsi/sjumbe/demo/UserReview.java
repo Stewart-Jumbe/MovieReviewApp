@@ -15,8 +15,8 @@ public class UserReview implements Serializable {
     private int film_film_id;
     private String user_review;
     private int star_rating;
-    private int reviewer_age;
-    private  String reviewer_sex;
+//    private int reviewer_age;
+//    private  String reviewer_sex;
 
     @ManyToOne
     @JsonIgnore
@@ -25,12 +25,11 @@ public class UserReview implements Serializable {
 
     public UserReview(){}
 
-    public UserReview(int film_film_id, String user_review, int star_rating, int reviewer_age, String reviewer_sex ){
+    public UserReview(int film_film_id, String user_review, int star_rating){
         this.film_film_id =film_film_id;
         this.user_review = user_review;
         this.star_rating = star_rating;
-        this.reviewer_age = reviewer_age;
-        this.reviewer_sex = reviewer_sex;
+//
     }
 
     public int getUser_review_id() {
@@ -66,19 +65,4 @@ public class UserReview implements Serializable {
         this.star_rating = star_rating;
     }
 
-    public int getReviewer_age() {
-        return reviewer_age;
-    }
-
-    public void setReviewer_age(int reviewer_age) {
-        this.reviewer_age = reviewer_age;
-    }
-
-    public String getReviewer_sex() {
-        return reviewer_sex;
-    }
-
-    public void setReviewer_sex(String reviewer_sex) {
-        this.reviewer_sex = reviewer_sex;
-    }
 }

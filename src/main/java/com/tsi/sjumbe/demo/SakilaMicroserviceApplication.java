@@ -139,8 +139,8 @@ public class SakilaMicroserviceApplication {
 
 	@PostMapping("/Add_Review")
 	public @ResponseBody
-	String addReview(@RequestParam int film_film_id,String user_review,int star_rating,int reviewer_age, String reviewer_sex){
-		UserReview addReview=new UserReview(film_film_id,user_review,star_rating, reviewer_age,reviewer_sex);
+	String addReview(@RequestParam int film_film_id,String user_review,int star_rating){
+		UserReview addReview=new UserReview(film_film_id,user_review,star_rating);
 		userReviewRepository.save(addReview);
 		return save;
 	}

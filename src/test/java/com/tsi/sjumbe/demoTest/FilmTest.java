@@ -122,9 +122,7 @@ public class FilmTest {
         testUserReviewSet.add(new UserReview(
                 1,
                 "Test Review",
-                2,
-                30,
-                "male" ));
+                2));
         film.setUserReview(testUserReviewSet);
         assertEquals(testUserReviewSet,film.getUserReview(),"Get/Set User Review method is not working");
     }

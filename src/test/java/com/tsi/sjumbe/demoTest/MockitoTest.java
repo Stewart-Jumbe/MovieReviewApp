@@ -109,17 +109,13 @@ public class MockitoTest {
     public void test_AddReview(){
         UserReview testReview = new UserReview(2,
                 "test review",
-                5,
-                45,
-                "female");
+                5);
 
         String expected ="save";
 
         String actual = sakilaMicroserviceApplication.addReview(testReview.getFilm_film_id(),
                 testReview.getUser_review(),
-                testReview.getStar_rating(),
-                testReview.getReviewer_age(),
-                testReview.getReviewer_sex());
+                testReview.getStar_rating());
 
         ArgumentCaptor<UserReview>actorArgumentCaptor = ArgumentCaptor.forClass(UserReview.class);
 
@@ -210,9 +206,7 @@ public class MockitoTest {
         UserReview testReview = new UserReview(
                 2,
                 "test review",
-                5,
-                45,
-                "female");
+                5);
         List<UserReview> expectedReviewList = new ArrayList<>();
         expectedReviewList.add(testReview);
         when(sakilaMicroserviceApplication.getAllReviews()).thenReturn(expectedReviewList);

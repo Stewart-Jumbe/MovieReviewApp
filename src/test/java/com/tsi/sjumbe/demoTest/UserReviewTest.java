@@ -11,18 +11,13 @@ class UserReviewTest {
     UserReview newTestReview = new UserReview(
             2,
             "test review",
-            5,
-            45,
-            "female" );
-
+            5);
 
 
     @Test
     public void test_UserReviewConstructor(){
         assertTrue(newTestReview instanceof UserReview);
     }
-
-
 
     @Test
     public void test_GetUser_review_id() {
@@ -53,7 +48,6 @@ class UserReviewTest {
         assertEquals("Amazing", newTestReview.getUser_review(), "Set user_review method is not working");
     }
 
-
     @Test
     public void test_GetStar_rating() {
         assertEquals(5,newTestReview.getStar_rating(),"Get/Set star rating is not working");
@@ -63,29 +57,5 @@ class UserReviewTest {
     public void test_SetStar_rating() {
         newTestReview.setStar_rating(6);
         assertEquals(6,newTestReview.getStar_rating(),"Get/Set star rating is not working");
-    }
-
-
-
-    @Test
-    public void test_GetReviewer_age() {
-        assertEquals(45,newTestReview.getReviewer_age(),"Get/Set Reviewer age method is not working");
-    }
-
-    @Test
-    public void test_SetReviewer_age() {
-        newTestReview.setReviewer_age(77);
-        assertEquals(77,newTestReview.getReviewer_age(),"Set Reviewer age method is not working");
-    }
-
-    @Test
-    public void test_GetReviewer_sex() {
-        assertEquals("female",newTestReview.getReviewer_sex(), "Get/Set Reviewer sex is not working");
-    }
-
-    @Test
-    public void test_setReviewer_sex() {
-        newTestReview.setReviewer_sex("Male");
-        assertEquals("Male",newTestReview.getReviewer_sex(), "Set Reviewer sex is not working");
     }
 }
