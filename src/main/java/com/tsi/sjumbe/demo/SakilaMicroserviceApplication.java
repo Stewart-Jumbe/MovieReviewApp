@@ -70,6 +70,7 @@ public class SakilaMicroserviceApplication {
 	@GetMapping("/All_Languages")
 	public @ResponseBody
 	Iterable<Language>getAllLanguages(){
+
 		return languageRepository.findAll();
 	}
 
@@ -89,6 +90,7 @@ public class SakilaMicroserviceApplication {
 	@GetMapping("/Get_Film/{film_id}")
 	public @ResponseBody
 	Optional<Film> getFilmByID(@PathVariable int film_id){
+
 		return filmRepository.findById(film_id);
 	}
 
@@ -150,7 +152,7 @@ public class SakilaMicroserviceApplication {
 	@DeleteMapping("/Remove_Review/{user_review_id}")
 	public @ResponseBody String removeReviewByID(@PathVariable int user_review_id){
 		userReviewRepository.deleteById(user_review_id);
-		return "The review with ID "+user_review_id +" has been deleted";
+		return "Deleted";
 	}
 
 	@PutMapping("/updatereview/{user_review_id}")

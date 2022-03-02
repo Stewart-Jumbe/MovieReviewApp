@@ -51,12 +51,16 @@ public class MockitoTest {
     @Test
     public void test_AddLanguage(){
         Language saveLanguage = new Language("Test Language");//Post req for mock db
+
         String expected = "save";//response
         String actual = sakilaMicroserviceApplication.addLanguage(saveLanguage.getName());
+
+
         ArgumentCaptor<Language>languageArgumentCaptor = ArgumentCaptor.forClass(Language.class);//holds data ("test language" temporarily
         //Verifying that repo has saved instance
         verify(languageRepository).save(languageArgumentCaptor.capture());//
         languageArgumentCaptor.getValue();
+
         Assertions.assertEquals(expected,actual,"Data hasn't been added to mock DB");
 
     }
@@ -91,7 +95,7 @@ public class MockitoTest {
     }
     //Testing Post Request to AddActor
     @Test
-    public void tes_addActor(){
+    public void test_addActor(){
         Actor testActor = new Actor("Test","Name");
 
         String expected ="New actor saved";
@@ -120,27 +124,35 @@ public class MockitoTest {
                 testReview.getUser_review(),
                 testReview.getStar_rating());
 
-        ArgumentCaptor<UserReview>actorArgumentCaptor = ArgumentCaptor.forClass(UserReview.class);
+        ArgumentCaptor<UserReview>reviewArgumentCaptor = ArgumentCaptor.forClass(UserReview.class);
 
-        verify(userReviewRepository).save(actorArgumentCaptor.capture());
+        verify(userReviewRepository).save(reviewArgumentCaptor.capture());
 
-        actorArgumentCaptor.getValue();
+        reviewArgumentCaptor.getValue();
         Assertions.assertEquals(expected,actual,"Actor data hasn't been added to mock DB");
 
     }
 
-    //Testing Delete request , to remove a review by ID
-//    @Test
-//    public void test_DeleteReview(){
-//        UserReview testReview = new UserReview(2,
-//                "test review",
-//                5,
-//                45,
-//                "female");
-//        userReviewRepository.save(testReview);
-//        when(sakilaMicroserviceApplication.removeReviewByID(testReview.getUser_review_id()).thenReturn(null);
-//
-//    }
+//    Testing Delete request , to remove a review by ID
+    @Test
+    public void test_DeleteReview(){
+        UserReview testReview = new UserReview(2,
+                "test review",
+                5);
+
+        int id =10;
+
+        String actual = sakilaMicroserviceApplication.removeReviewByID(id);
+        String expected ="Deleted";
+
+        //Verifying whether userReviewRepository.deleteById was run
+        //ArgumentCaptor of type Integer used as input to delete by ID is int
+        ArgumentCaptor<Integer>reviewArgumentCaptor = ArgumentCaptor.forClass(Integer.class);
+        verify(userReviewRepository).deleteById(reviewArgumentCaptor.capture());
+        reviewArgumentCaptor.getValue();
+
+        Assertions.assertEquals(expected, actual);
+    }
 
 
     //Get Mapping for listing All_languages
@@ -149,8 +161,7 @@ public class MockitoTest {
             Language testLang1 = new Language("Kwaconda");
             List<Language> languageList = new ArrayList<>();
             languageList.add(testLang1);
-            when(sakilaMicroserviceApplication.getAllLanguages()).
-                    thenReturn(languageList);
+            when(sakilaMicroserviceApplication.getAllLanguages()).thenReturn(languageList);
             Assertions.assertEquals(languageList, sakilaMicroserviceApplication.getAllLanguages(), "Languages data was not saved to Mock DB.");
     }
 
@@ -178,8 +189,24 @@ public class MockitoTest {
                 2001,
                 1,
                 1);
-        when(sakilaMicroserviceApplication.getFilmByID(testFilm1.getFilm_id())).thenReturn(Optional.of(testFilm1));
-        Assertions.assertEquals(sakilaMicroserviceApplication.getFilmByID(testFilm1.getFilm_id()), Optional.of(testFilm1), "Films data was not saved to Mock DB.");
+
+       testFilm1.setFilm_id(0);
+
+//        Optional<Film> actual = sakilaMicroserviceApplication.getFilmByID(testFilm1.getFilm_id())
+
+
+        when(sakilaMicroserviceApplication.getFilmByID(testFilm1.getFilm_id())).
+                thenReturn(Optional.of(testFilm1));
+
+        Optional<Film> actual = sakilaMicroserviceApplication.getFilmByID(testFilm1.getFilm_id());
+        Optional expected = Optional.of(testFilm1);
+
+        //Checking if findbyID method was run
+        ArgumentCaptor<Integer>filmArgumentCaptor = ArgumentCaptor.forClass(Integer.class);
+        verify(filmRepository).findById(filmArgumentCaptor.capture());
+        filmArgumentCaptor.getValue();
+
+        Assertions.assertEquals( expected,actual, "Films data was not saved to Mock DB.");
     }
 
     //Get Mapping for listing All_Actors
@@ -188,7 +215,10 @@ public class MockitoTest {
         Actor testActor = new Actor("Jojo","Star");
         List<Actor> expectedActorList = new ArrayList<>();
         expectedActorList.add(testActor);
+
         when(sakilaMicroserviceApplication.getAllActors()).thenReturn(expectedActorList);
+
+
         Assertions.assertEquals(expectedActorList, sakilaMicroserviceApplication.getAllActors(), "Actors data was not saved to Mock DB.");
     }
 

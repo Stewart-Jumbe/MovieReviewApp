@@ -1,9 +1,6 @@
 package com.tsi.sjumbe.demoTest;
 
-import com.tsi.sjumbe.demo.Actor;
-import com.tsi.sjumbe.demo.Film;
-import com.tsi.sjumbe.demo.Language;
-import com.tsi.sjumbe.demo.UserReview;
+import com.tsi.sjumbe.demo.*;
 import org.aspectj.weaver.patterns.HasThisTypePatternTriedToSneakInSomeGenericOrParameterizedTypePatternMatchingStuffAnywhereVisitor;
 import org.junit.jupiter.api.Test;
 
@@ -24,6 +21,7 @@ public class FilmTest {
 
     private Set<UserReview> testUserReviewSet = new HashSet<>();
     private Set<Actor> testActorSet = new HashSet<>();
+    private Set<Category> testCategorySet = new HashSet<>();
     private Language testLanguage = new Language();
 
     @Test
@@ -143,8 +141,9 @@ public class FilmTest {
 
     @Test
     public void testSet_Actor(){
+        testActorSet.add(new Actor("Rocco","Rain"));
         film.setActor(testActorSet);
-        assertEquals(testActorSet, film.getActor(), "The getActor method in Films is not working");
+        assertEquals(film.getActor(), testActorSet, "The getActor method in Films is not working");
     }
     @Test
     public void test_GetLanguage(){
@@ -155,6 +154,20 @@ public class FilmTest {
     public void test_SetLanguage(){
         film.setLanguage(testLanguage);
         assertEquals(testLanguage, film.getLanguage(),"Set Language method is not working");
+    }
+
+    @Test
+    public void test_SetCategory(){
+        testCategorySet.add(new Category("Test Category"));
+        film.setCategory(testCategorySet);
+        assertEquals(testCategorySet,film.getCategory(), "Set Category is not working");
+    }
+
+    @Test
+    public void test_GetCategory(){
+        testCategorySet.add(new Category("Test Category"));
+        film.setCategory(testCategorySet);
+        assertEquals(film.getCategory(),testCategorySet, "Set Category is not working");
     }
 
 

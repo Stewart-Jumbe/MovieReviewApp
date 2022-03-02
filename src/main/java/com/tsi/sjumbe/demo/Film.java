@@ -35,9 +35,9 @@ public class Film implements Serializable {
     @OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
     private Set<UserReview>userReview = new HashSet<>();
 
-    //Needed to add OnetoMany connection to get userreview table
-    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
-    private Set<Category>category = new HashSet<>();;
+//    //Needed to add OnetoMany connection to get userreview table
+//    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
+//    private Set<Category>category = new HashSet<>();;
 
 
 
@@ -72,6 +72,19 @@ public class Film implements Serializable {
     public void setLanguage_id(int language_id) {
         this.language_id = language_id;
     }
+
+    //Link all the films to their category
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "film_category",
+            joinColumns = {
+                    @JoinColumn(name = "film_id", referencedColumnName = "film_id",
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "category_id", referencedColumnName = "category_id",
+                            nullable = false, updatable = false)})
+    private Set<Category> category = new HashSet<>();
+
+
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(name = "film_actor",

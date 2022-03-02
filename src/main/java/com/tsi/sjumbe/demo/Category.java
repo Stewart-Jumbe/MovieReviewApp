@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -14,11 +15,14 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int category_id;
 
-
-    @ManyToOne
+    @ManyToMany(mappedBy = "category", fetch = FetchType.LAZY)
     @JsonIgnore
-    @JoinColumn(name ="category_id", insertable = false, nullable = false, updatable = false)
-    private Film film; // No need for getters and setters for film
+    private Set<Film> film = new HashSet<>();
+
+//    @ManyToOne
+//    @JsonIgnore
+//    @JoinColumn(name ="category_id", insertable = false, nullable = false, updatable = false)
+//    private Film film; // No need for getters and setters for film
 
     //Attributes
     private String name;
@@ -49,11 +53,11 @@ public class Category implements Serializable {
         this.category_id = category_id;
     }
 
-    public Film getFilm() {
+    public Set<Film> getFilm() {
         return film;
     }
 
-    public void setFilm(Film film) {
+    public void setFilm(Set<Film> film) {
         this.film = film;
     }
 }
