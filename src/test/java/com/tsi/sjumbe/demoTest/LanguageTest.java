@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class LanguageTest {
 
     private Language language= new Language();
-   // private Set<Film>film = new HashSet<Film>()
+    private Set<Film>filmSetList = new HashSet<>();
 
     @Test
     public void test_constructor(){
@@ -22,7 +22,6 @@ public class LanguageTest {
     }
 
 
-    private Set<Film>filmSet = new HashSet<>();
     @Test
     public void test_getName(){
         language.setName("testname");
@@ -31,13 +30,17 @@ public class LanguageTest {
 
     @Test
     public void test_GetFilm(){
-        filmSet.add(new Film("test title",
+
+        //Adding film to created Hashset
+        filmSetList.add(new Film("test title",
                 "test description",
                 "test rating",
                 2001,
                 1,
                 1));
-        ;
+
+        language.setFilm(filmSetList);
+        assertEquals(filmSetList,language.getFilm());
     }
 
 

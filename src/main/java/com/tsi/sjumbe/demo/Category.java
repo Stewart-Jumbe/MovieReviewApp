@@ -19,10 +19,6 @@ public class Category implements Serializable {
     @JsonIgnore
     private Set<Film> film = new HashSet<>();
 
-//    @ManyToOne
-//    @JsonIgnore
-//    @JoinColumn(name ="category_id", insertable = false, nullable = false, updatable = false)
-//    private Film film; // No need for getters and setters for film
 
     //Attributes
     private String name;

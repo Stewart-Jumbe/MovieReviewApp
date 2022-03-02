@@ -1,6 +1,7 @@
 package com.tsi.sjumbe.demoTest;
-import com.amazonaws.services.secretsmanager.model.ResourceNotFoundException;
+
 import com.tsi.sjumbe.demo.*;
+
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,9 +10,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 
 import java.util.ArrayList;
@@ -85,11 +84,10 @@ public class MockitoTest {
                 saveFilm.getLanguage_id());
 
         ArgumentCaptor<Film>filmArgumentCaptor = ArgumentCaptor.forClass(Film.class);//holds data ("test language" temporarily
-
         //Verifying that repo has saved instance
         verify(filmRepository).save(filmArgumentCaptor.capture());//
-
         filmArgumentCaptor.getValue();
+
         Assertions.assertEquals(expected,actual,"Data hasn't been added to mock DB");
 
     }
@@ -103,10 +101,9 @@ public class MockitoTest {
         String actual = sakilaMicroserviceApplication.addActor(testActor.getFirst_name(),testActor.getLast_name());
 
         ArgumentCaptor<Actor>actorArgumentCaptor = ArgumentCaptor.forClass(Actor.class);
-
         verify(actorRepository).save(actorArgumentCaptor.capture());
-
         actorArgumentCaptor.getValue();
+
         Assertions.assertEquals(expected,actual,"Actor data hasn't been added to mock DB");
 
     }
@@ -125,17 +122,16 @@ public class MockitoTest {
                 testReview.getStar_rating());
 
         ArgumentCaptor<UserReview>reviewArgumentCaptor = ArgumentCaptor.forClass(UserReview.class);
-
         verify(userReviewRepository).save(reviewArgumentCaptor.capture());
-
         reviewArgumentCaptor.getValue();
+
         Assertions.assertEquals(expected,actual,"Actor data hasn't been added to mock DB");
 
     }
 
 //    Testing Delete request , to remove a review by ID
     @Test
-    public void test_DeleteReview(){
+    public void test_DeleteReviewByID(){
         UserReview testReview = new UserReview(2,
                 "test review",
                 5);
@@ -161,6 +157,7 @@ public class MockitoTest {
             Language testLang1 = new Language("Kwaconda");
             List<Language> languageList = new ArrayList<>();
             languageList.add(testLang1);
+
             when(sakilaMicroserviceApplication.getAllLanguages()).thenReturn(languageList);
             Assertions.assertEquals(languageList, sakilaMicroserviceApplication.getAllLanguages(), "Languages data was not saved to Mock DB.");
     }
@@ -217,8 +214,6 @@ public class MockitoTest {
         expectedActorList.add(testActor);
 
         when(sakilaMicroserviceApplication.getAllActors()).thenReturn(expectedActorList);
-
-
         Assertions.assertEquals(expectedActorList, sakilaMicroserviceApplication.getAllActors(), "Actors data was not saved to Mock DB.");
     }
 
@@ -229,6 +224,7 @@ public class MockitoTest {
         List<Category> expectedCategoryList = new ArrayList<>();
         expectedCategoryList.add(testCategory);
         when(sakilaMicroserviceApplication.getAllCategories()).thenReturn(expectedCategoryList);
+
         Assertions.assertEquals(expectedCategoryList, sakilaMicroserviceApplication.getAllCategories(), "Categories data was not saved to Mock DB.");
 
     }
