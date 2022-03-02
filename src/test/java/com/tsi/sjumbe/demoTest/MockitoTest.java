@@ -1,4 +1,5 @@
 package com.tsi.sjumbe.demoTest;
+import com.amazonaws.services.secretsmanager.model.ResourceNotFoundException;
 import com.tsi.sjumbe.demo.*;
 
 import org.junit.jupiter.api.Assertions;
@@ -8,7 +9,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import java.util.ArrayList;
@@ -213,7 +216,6 @@ public class MockitoTest {
         Assertions.assertEquals(expectedReviewList, sakilaMicroserviceApplication.getAllReviews(), "UserReview data was not saved to Mock DB.");
 
     }
-    //added comment
 
 
 }
