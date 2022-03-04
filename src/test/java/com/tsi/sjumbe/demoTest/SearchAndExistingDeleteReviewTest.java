@@ -23,6 +23,8 @@ import org.openqa.selenium.Keys;
 import java.util.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
 public class SearchAndExistingDeleteReviewTest {
   private WebDriver driver;
   private Map<String, Object> vars;
@@ -44,24 +46,30 @@ public class SearchAndExistingDeleteReviewTest {
     driver.manage().window().setSize(new Dimension(1791, 1040));
     driver.findElement(By.cssSelector(".SearchBar > input")).click();
     driver.findElement(By.cssSelector(".SearchBar > input")).sendKeys("anacon");
+    driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
     driver.findElement(By.name("Review ID")).click();
     driver.findElement(By.name("Review ID")).sendKeys("18");
     driver.findElement(By.cssSelector(".reviews")).click();
     driver.findElement(By.cssSelector(".reviews")).click();
+    driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
     {
       WebElement element = driver.findElement(By.cssSelector(".reviews"));
       Actions builder = new Actions(driver);
       builder.doubleClick(element).perform();
     }
+    driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
     driver.findElement(By.name("Review ID")).click();
     driver.findElement(By.name("Review ID")).click();
+    driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
     {
       WebElement element = driver.findElement(By.name("Review ID"));
       Actions builder = new Actions(driver);
       builder.doubleClick(element).perform();
     }
     driver.findElement(By.cssSelector("button:nth-child(2)")).click();
+    driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
     driver.findElement(By.cssSelector(".SearchBar > input")).click();
+    driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
     driver.findElement(By.cssSelector(".SearchBar > input")).sendKeys("anaconda");
   }
 }

@@ -23,6 +23,8 @@ import org.openqa.selenium.Keys;
 import java.util.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
 public class SearchAndAddNewMovieReviewTest {
   private WebDriver driver;
   private Map<String, Object> vars;
@@ -44,14 +46,18 @@ public class SearchAndAddNewMovieReviewTest {
     driver.manage().window().setSize(new Dimension(1791, 1040));
     driver.findElement(By.cssSelector(".SearchBar > input")).click();
     driver.findElement(By.cssSelector(".SearchBar > input")).sendKeys("anaconda");
+    driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
     driver.findElement(By.cssSelector(".post > input:nth-child(1)")).click();
     driver.findElement(By.cssSelector(".post > input:nth-child(1)")).sendKeys("315");
+    driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
     driver.findElement(By.cssSelector(".post > input:nth-child(3)")).click();
     driver.findElement(By.cssSelector(".post > input:nth-child(3)")).sendKeys("It was pretty good actually!!");
     driver.findElement(By.cssSelector(".post > input:nth-child(5)")).click();
     driver.findElement(By.cssSelector(".post > input:nth-child(5)")).sendKeys(" 4");
     driver.findElement(By.cssSelector(".post > button")).click();
+    driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
     driver.findElement(By.cssSelector(".SearchBar > input")).click();
+    driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
     driver.findElement(By.cssSelector(".SearchBar > input")).sendKeys("ana");
   }
 }

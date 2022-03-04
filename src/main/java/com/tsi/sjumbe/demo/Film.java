@@ -35,12 +35,6 @@ public class Film implements Serializable {
     @OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
     private Set<UserReview>userReview = new HashSet<>();
 
-//    //Needed to add OnetoMany connection to get userreview table
-//    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
-//    private Set<Category>category = new HashSet<>();;
-
-
-
 
     public Film(String title,
                 String description,

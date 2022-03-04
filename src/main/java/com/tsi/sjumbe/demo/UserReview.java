@@ -15,8 +15,7 @@ public class UserReview implements Serializable {
     private int film_film_id;
     private String user_review;
     private int star_rating;
-//    private int reviewer_age;
-//    private  String reviewer_sex;
+
 
     @ManyToOne
     @JsonIgnore
