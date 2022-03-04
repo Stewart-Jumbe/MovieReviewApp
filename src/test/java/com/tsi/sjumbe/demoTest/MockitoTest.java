@@ -22,6 +22,7 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)//inhereting characteristics needed to use mockito
 public class MockitoTest {
+
     private SakilaMicroserviceApplication sakilaMicroserviceApplication;
 
     @Mock
@@ -34,7 +35,7 @@ public class MockitoTest {
     private CategoryRepository categoryRepository;
     @Mock
     private UserReviewRepository userReviewRepository;
-    private Object Film;
+
 
     @BeforeEach // creating an instance of our db with no data
     void Setup(){
