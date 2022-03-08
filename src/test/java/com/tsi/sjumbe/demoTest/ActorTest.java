@@ -2,7 +2,6 @@ package com.tsi.sjumbe.demoTest;
 
 import com.tsi.sjumbe.demo.Actor;
 import com.tsi.sjumbe.demo.Film;
-import com.tsi.sjumbe.demo.Language;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;

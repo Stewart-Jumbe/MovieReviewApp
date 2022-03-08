@@ -9,8 +9,8 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "*")//needed for recieving request via api
 @SpringBootApplication
-@RestController
-@RequestMapping("/home")
+@RestController // handles GET , POST, DELETE, PUT requests
+@RequestMapping("/home")//base url
 public class SakilaMicroserviceApplication {
 
 
